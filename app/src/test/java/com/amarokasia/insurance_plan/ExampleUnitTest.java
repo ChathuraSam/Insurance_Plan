@@ -14,15 +14,16 @@ import static org.junit.Assert.*;
 
 public class   ExampleUnitTest {
 
-    private CalculatorActivity calc;
+    private CalculatorActivity calc = new CalculatorActivity();
 
     @Test
     public void addition_isCorrect() {
         assertEquals(4, 2 + 2);
     }
 
-    @Test
-    public void calculateNUmbers(){
-        //double result = calc.calculate();
-    }
+//    @Test
+//    public void testMonthlyInstallment(){
+//        double result = calc.calcMonthlyinstallment(200000,25000,30000,5000,40000);
+//        assertEquals(25000,result,1);
+//    }
 }
