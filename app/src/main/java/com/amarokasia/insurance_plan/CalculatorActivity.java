@@ -45,12 +45,12 @@ public class CalculatorActivity extends AppCompatActivity {
             * Best plan = Monthly installment * 12
             * */
 
-            double profit = income - (bills+rental+medical+loan);
-            double monthlyInstallments = profit/4;
-            double bestPlan = monthlyInstallments*12;
 
-            txtMonthlyInstallment.setText("Monthly Installment : "+Double.toString(monthlyInstallments));
-            txtBestPlan.setText("best Suitable Plan is : "+Double.toString(bestPlan));
+            double monthlyInstallments = calcMonthlyinstallment(income, bills, rental, medical, loan);
+            double bestPlan = calcBestPlan(monthlyInstallments);
+
+            txtMonthlyInstallment.setText("Monthly Installment : Rs."+Double.toString(monthlyInstallments));
+            txtBestPlan.setText("Best Suitable Plan : Rs."+Double.toString(bestPlan));
 
             saveData(income,bills,rental,medical,loan, monthlyInstallments, bestPlan);
 
@@ -62,6 +62,20 @@ public class CalculatorActivity extends AppCompatActivity {
 
     }
 
+    public double calcMonthlyinstallment(double income, double bills, double rental, double medical, double loan){
+        double monthlyInstallment = 0.0;
+        double profit = income - (bills+rental+medical+loan);
+        monthlyInstallment = profit/4;
+
+        return  monthlyInstallment;
+    }
+
+
+    public double calcBestPlan(double monthlyInstallment){
+        double bestPlan = monthlyInstallment*12;
+        return bestPlan;
+    }
+
     public  void saveData(double income, double bills, double rental, double medical, double loan, double installments, double plan){
         boolean isInserted = myDb.insertData(income, bills, rental, medical, loan, installments, plan);
         if (isInserted){
@@ -70,8 +84,4 @@ public class CalculatorActivity extends AppCompatActivity {
             Toast.makeText(this, "Failed To Database", Toast.LENGTH_SHORT).show();
         }
     }
-
-
-
-
 }
