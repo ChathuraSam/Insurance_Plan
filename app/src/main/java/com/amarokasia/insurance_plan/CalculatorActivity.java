@@ -54,10 +54,10 @@ public class CalculatorActivity extends AppCompatActivity {
 
             saveData(income,bills,rental,medical,loan, monthlyInstallments, bestPlan);
 
-//            Toast.makeText(this, "Clicked"+(Double.toString(income+bills)), Toast.LENGTH_SHORT).show();
+
         }catch (Exception e){
             e.printStackTrace();
-//            Toast.makeText(this, "Clicked"+e.toString(), Toast.LENGTH_SHORT).show();
+
         }
 
     }
